@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ShadowDNA WebUI</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="modern-ui">
+    <div class="main-container">
+        <!-- Header Section -->
+	<!--<header class="header"></header>-->
+
+        <!-- Main Content Area -->
+        <main class="content-wrapper">
+				<div class="logo">ShadowDNA WebUI</div>
+				<button id="theme-toggle" class="connect-btn">🌙 Dark Mode</button>
+				<button id="connectWallet" class="connect-btn">🌐 Connect Wallet</button>
+				
+				<!-- Configuration Panel -->
+            <aside class="config-panel">
+                <h3>Configuration</h3>
+				
+				<!-- Contract Address -->
+                <br><div class="setting-group">
+                    <button id="cpcnaddr" class="contract-btn" onclick="copyIdToClipboard(projectContractAddress);scrollToBottom();">
+                        📝 Copy $SHADNA address
+                    </button>
+                </div>
+                
+                <!-- Gas Buffer Settings -->
+                 <br><div class="setting-group">
+                    <label for="buffergaslimit">Buffer Gas Limit (default 75000):</label>
+                    <input type="number" id="buffergaslimit" value="75000" min="10000"/>
+                    <p style="font-size: 14px; color: olive;" class="note">
+                        *** Increase this if transactions fail due to out-of-gas errors ***
+                    </p>
+                </div>
+
+                <!-- Block Time Display -->
+                 <br><div class="setting-group">
+                    <label for="uxtime" style="font-size: 14px; color: olive;">Current Blocktime (Unix):</label>
+                    <button id="uxtime" value="[no wallet/connection]" class="block-time-btn" onclick="navigator.clipboard.writeText(document.getElementById('uxtime').value);alert('copied');"> 
+                        [ No wallet/network connection ]
+                    </button>
+                </div>
+
+            </aside>
+				
+            <!-- Navigation Tabs -->
+            <nav class="tab-nav">
+			<h1 id="mainmenu">Main Menu</h1><br><br>
+					
+				<div class="tab-section">
+                    <h2>Shadow Operations</h2>
+                    <div class="tabs">
+                        <button class="nav-item" data-tab="shadowgenerate">Generate ID</button>
+                        <button class="nav-item" data-tab="shadowdeposit">Deposit</button>
+                        <button class="nav-item" data-tab="shadowstatus">Check Account</button>
+                        <button class="nav-item" data-tab="shadowshare">Share (Distribution)</button>
+                        <button class="nav-item" data-tab="shadowwithdraw">Withdraw</button>
+						<button class="nav-item" data-tab="shadowproxy">Proxy</button>
+                        <button class="nav-item" data-tab="shadowfee">Fee</button>
+                    </div>
+                </div>
+				
+				<div class="tab-section">
+                    <h2>Service Operations</h2>
+                    <div class="tabs">
+                        <button class="nav-item" data-tab="servicebuy">Buy Token</button>
+                        <button class="nav-item" data-tab="servicefaucet">Faucet</button>
+                    </div>
+				</div>
+
+                <div class="tab-section">
+                    <h2>[Coming Soon...]</h2>
+                    <div class="tabs">
+                        TBA...
+                    </div>
+                </div>
+				
+				<div class="tab-section">
+                    <h2>[Coming Soon...]</h2>
+                    <div class="tabs">
+                        TBA...
+                    </div>
+                </div>
+
+                <div class="tab-section">
+                    <h2>Donation Operations</h2>
+                    <div class="tabs">
+                        <button class="nav-item" data-tab="donatefaucet">Donate to Faucet</button>
+                        <button class="nav-item" data-tab="donateliq">Donate to LP</button>
+                    </div>
+                </div>
+
+                <div class="tab-section">
+                    <h2>Miscellaneous</h2>
+                    <div class="tabs">
+                        <button class="nav-item" data-tab="miscbulktxwallet">Bulk Transfers (Wallet)</button>
+                        <button class="nav-item" data-tab="miscbulktxshadow">Bulk Transfers (Shadow)</button>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content Area -->
+            <section class="content-area" id="contentArea">
+                <p>Please connect your wallet and select a tab.</p>
+            </section>
+
+        </main>
+
+        <!-- dummy debug  -->
+        <!--<div class="tx-info-section">
+            <textarea id="tempResult" rows="5" placeholder="Transaction details will appear here..." style="width:100%;"></textarea>
+            <button id="gettxinfo" class="btn">TX Info</button>
+        </div>-->
+
+        <!-- Main Lib source -->
+		<script>
+			const themeToggle = document.getElementById('theme-toggle');
+			const body = document.body;
+
+			themeToggle.addEventListener('click', () => {
+				// Toggle 'dark-mode' class on body
+				body.classList.toggle('dark-mode');
+
+				// Update button text based on theme
+				if (body.classList.contains('dark-mode')) {
+					themeToggle.textContent = '☀️ Light Mode';
+				} else {
+					themeToggle.textContent = '🌙 Dark Mode';
+				}
+			});
+		</script>
+        <script src="assets/js/ethers.umd.min_v5.8.0.js" type="application/javascript"></script>
+        <script src="assets/js/contract.js"></script>
+        
+        <!-- Initialization Script -->
+        <script>
+          window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+              const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+              const el = document.getElementById("contentArea");
+
+              if (isMobile && !window.ethereum && el) {
+                el.innerHTML =
+                  '<p>📱 on Mobile? Open this page in MetaMask or Trust Wallet browser.</p>';
+              }
+            }, 500);
+          });
+        </script>
+    </div>
+</body>
+</html>

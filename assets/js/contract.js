@@ -574,7 +574,7 @@ function showTab(tabName) {
       html = `
         <fieldset style="display: block;margin-left: 4px;margin-right: 4px;padding-top: 4px;
 			  padding-bottom: 4px;padding-left: 4px;padding-right: 4px;">
-		<legend style="font-size: 25px; font-weight: bold;">Check Shadow ID & Proxy</legend>
+		<legend style="font-size: 25px; font-weight: bold;">Check Status</legend>
         <div class="form-group">
           <label>Shadow ID (0x + 64 hex chars)</label>
           <input type="text" id="checkShadowId" placeholder="0x..." />
@@ -587,7 +587,7 @@ function showTab(tabName) {
 		<br><br><br>
 		<fieldset style="display: block;margin-left: 4px;margin-right: 4px;padding-top: 4px;
 			  padding-bottom: 4px;padding-left: 4px;padding-right: 4px;">
-		<legend style="font-size: 25px; font-weight: bold;">Check Asset Balance</legend>
+		<legend style="font-size: 25px; font-weight: bold;">Check Assets</legend>
         <div class="form-group">
           <label>Shadow ID (0x + 64 hex chars)</label>
           <input type="text" id="searchShadowId" placeholder="0x..." />

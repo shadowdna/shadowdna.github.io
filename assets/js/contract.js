@@ -636,7 +636,7 @@ function showTab(tabName) {
 
     case "servicebuy":
       html = `
-        <h2>Buy Tokens</h2>
+        <h2>Buy SHADNA token</h2>
         <div class="form-group">
 		  <span style='color:gray;'>*Numbers are in human-readable format</span><br><br>
           <label>Pay amount in POL native coin</label>

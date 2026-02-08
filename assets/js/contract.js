@@ -113,7 +113,7 @@ async function ensureCorrectNetwork() {
         params: [
           {
             chainId: TARGET_CHAIN_ID_HEX,
-            chainName: "Amoy Polygon Testnet",
+            chainName: "Polygon Mainnet",
             nativeCurrency: {
               name: "POL",
               symbol: "POL",
@@ -866,7 +866,7 @@ async function callShadowShare() {
     resultDiv.style.display = "block";
     resultDiv.innerHTML = "Sharing to shadowIds...";
     const tx = await contract.shadowShare(receivers, auth, tokenAddr, { gasLimit: estGasLimit });
-    resultDiv.innerHTML = `✅ Transaction: <a href="https://amoy.polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
+    resultDiv.innerHTML = `✅ Transaction: <a href="https://polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
     await tx.wait();
     resultDiv.innerHTML += "<br>✅ Confirmed!";
   } catch (err) {
@@ -891,7 +891,7 @@ async function callShadowProxy() {
 	let estGasLimit = await contract.estimateGas.shadowSetProxy(oldShadowId, oldAuth, newShadowId, userAddress);
 	estGasLimit = estGasLimit.add(bufferGasLimit);
     const tx = await contract.shadowSetProxy(oldShadowId, oldAuth, newShadowId, userAddress, { gasLimit: estGasLimit });
-    resultDiv.innerHTML = `✅ Transaction: <a href="https://amoy.polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
+    resultDiv.innerHTML = `✅ Transaction: <a href="https://polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
     await tx.wait();
     resultDiv.innerHTML += "<br>✅ Confirmed!";
   } catch (err) {
@@ -1003,7 +1003,7 @@ async function callFaucet() {
 		alert('undefined receiver type');
 		return;
 	}
-	resultDiv.innerHTML = `✅ Transaction: <a href="https://amoy.polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
+	resultDiv.innerHTML = `✅ Transaction: <a href="https://polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
     await tx.wait();
     resultDiv.innerHTML += "<br>✅ Confirmed!";
   } catch (err) {
@@ -1022,7 +1022,7 @@ async function callFaucet() {
 	let estGasLimit = await contract.estimateGas.burnPotAll();
 	estGasLimit = estGasLimit.add(bufferGasLimit);
     const tx = await contract.burnPotAll({ gasLimit: estGasLimit });
-    resultDiv.innerHTML = `✅ Transaction: <a href="https://amoy.polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
+    resultDiv.innerHTML = `✅ Transaction: <a href="https://polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
     await tx.wait();
     resultDiv.innerHTML += "<br>✅ Confirmed!";
   } catch (err) {
@@ -1101,7 +1101,7 @@ async function callBuy() {
 	estGasLimit = estGasLimit.add(bufferGasLimit);
 	let tx = null;
 	tx = await contract.buy(assetInBN, tokensOutBN, slippageNum, { value: assetInBN, gasLimit: estGasLimit });
-    resultDiv.innerHTML = `✅ Transaction: <a href="https://amoy.polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
+    resultDiv.innerHTML = `✅ Transaction: <a href="https://polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
     await tx.wait();
     resultDiv.innerHTML += "<br>✅ Confirmed!";
   } catch (err) {
@@ -1153,7 +1153,7 @@ async function callBulkWalletTransfer() {
     const tx = await contract.transferToManyWallets(receivers, amount, userAddress, { gasLimit: estGasLimit });
 
     resultDiv.innerHTML = `✅ Transaction: 
-      <a href="https://amoy.polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
+      <a href="https://polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
 
     await tx.wait();
     resultDiv.innerHTML += "<br>✅ Confirmed!";
@@ -1222,7 +1222,7 @@ async function callBulkShadowTransfer() {
 		estGasLimit = estGasLimit.add(bufferGasLimit);
 		tx = await contract.transferToManyShadows(auth, receivers, tokenAddr, amountBN, userAddress, { value: amountBN, gasLimit: estGasLimit });
 	}
-    resultDiv.innerHTML = `✅ Transaction: <a href="https://amoy.polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
+    resultDiv.innerHTML = `✅ Transaction: <a href="https://polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
     await tx.wait();
     resultDiv.innerHTML += "<br>✅ Confirmed!";
   } catch (err) {
@@ -1255,7 +1255,7 @@ async function callDonateLP() {
 	let estGasLimit = await contract.estimateGas.donateToLP(amountBN, userAddress);
 	estGasLimit = estGasLimit.add(bufferGasLimit);
     const tx = await contract.donateToLP(amountBN, userAddress, { gasLimit: estGasLimit });
-    resultDiv.innerHTML = `✅ Transaction: <a href="https://amoy.polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
+    resultDiv.innerHTML = `✅ Transaction: <a href="https://polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
     await tx.wait();
     resultDiv.innerHTML += "<br>✅ Confirmed!";
   } catch (err) {
@@ -1288,7 +1288,7 @@ async function callDonateFaucet() {
 	let estGasLimit = await contract.estimateGas.donateToFaucet(amountBN, userAddress);
 	estGasLimit = estGasLimit.add(bufferGasLimit);
     const tx = await contract.donateToFaucet(amountBN, userAddress, { gasLimit: estGasLimit });
-    resultDiv.innerHTML = `✅ Transaction: <a href="https://amoy.polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
+    resultDiv.innerHTML = `✅ Transaction: <a href="https://polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
     await tx.wait();
     resultDiv.innerHTML += "<br>✅ Confirmed!";
   } catch (err) {
@@ -1413,7 +1413,7 @@ async function callShadowDeposit() {
 	  estGasLimit = estGasLimit.add(bufferGasLimit);
       tx = await contract.shadowDeposit(shadowId, tokenAddr, amountBN, sponsor, userAddress, {gasLimit: estGasLimit});
     }
-    resultDiv.innerHTML = `⏳ Transaction sent:<br><a href="https://amoy.polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
+    resultDiv.innerHTML = `⏳ Transaction sent:<br><a href="https://polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
     await tx.wait();
     resultDiv.innerHTML += "<br>✅ Confirmed!";
   } catch (err) {
@@ -1480,7 +1480,7 @@ async function callShadowWithdraw() {
 	let estGasLimit = await contract.estimateGas.shadowWithdraw(auth, tokenAddr, amountBN, userAddress);
 	estGasLimit = estGasLimit.add(bufferGasLimit);
     const tx = await contract.shadowWithdraw(auth, tokenAddr, amountBN, userAddress, { gasLimit: estGasLimit });
-    resultDiv.innerHTML = `⏳ Transaction sent:<br><a href="https://amoy.polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
+    resultDiv.innerHTML = `⏳ Transaction sent:<br><a href="https://polygonscan.com/tx/${tx.hash}" target="_blank">${tx.hash}</a>`;
     await tx.wait();
     resultDiv.innerHTML += "<br>✅ Confirmed!";
   } catch (err) {

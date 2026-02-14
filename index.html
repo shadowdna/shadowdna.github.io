@@ -5,151 +5,237 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>ShadowDNA WebUI</title>
     <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Add custom home page styles -->
+    <style>
+        body.modern-ui {
+            background-color: #121416;
+            color: #a8aebf;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #1e2024;
+            border-bottom: 1px solid rgba(38, 40, 45, 0.5);
+            box-shadow: inset 0 -1px rgba(38, 40, 45, 0.5);
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            color: #a8aebf;
+            font-weight: bold;
+        }
+
+        .connect-btn {
+            background-color: #6366f1;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .connect-btn:hover {
+            background-color: #4f46e5;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 2rem;
+            background-color: #1e2024;
+            border-radius: 8px;
+            box-shadow: inset 0 -1px rgba(38, 40, 45, 0.5), inset 0 1px rgba(38, 40, 45, 0.5);
+        }
+
+        .tab-nav {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: #26292e;
+            border-radius: 8px;
+            box-shadow: inset 0 -1px rgba(38, 40, 45, 0.5);
+        }
+
+        .tab-nav button {
+            background-color: transparent;
+            color: #a8aebf;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-nav button.active {
+            background-color: rgba(105, 102, 241, 0.7);
+            box-shadow: inset 0 -2px rgba(38, 40, 45, 0.5);
+        }
+
+        .tab-section {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: #1e2024;
+            border-radius: 8px;
+            box-shadow: inset 0 -1px rgba(38, 40, 45, 0.5), inset 0 1px rgba(38, 40, 45, 0.5);
+        }
+
+        .tab-section h2 {
+            font-size: 1.25rem;
+            color: #a8aebf;
+            margin-bottom: 0.5rem;
+            border-left: 4px solid #6366f1;
+            padding-left: 0.75rem;
+        }
+
+        .setting-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 1rem;
+            background-color: rgba(23, 24, 25, 0.8);
+            border-radius: 8px;
+            box-shadow: inset 0 -1px rgba(38, 40, 45, 0.5), inset 0 1px rgba(38, 40, 45, 0.5);
+        }
+
+        .setting-group label {
+            font-size: 0.9rem;
+            color: #a8aebf;
+        }
+
+        .setting-group input[type="number"] {
+            padding: 0.75rem;
+            border: 1px solid rgba(47, 53, 65, 0.5);
+            border-radius: 6px;
+            font-size: 1rem;
+            background-color: rgba(23, 24, 25, 0.8);
+        }
+
+        .btn-primary {
+            background-color: #6366f1;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #4f46e5;
+            box-shadow: 0 3px 8px rgba(99, 102, 241, 0.3);
+        }
+    </style>
 </head>
 <body class="modern-ui">
+
     <div class="main-container">
-        <!-- Header Section -->
-	<!--<header class="header"></header>-->
+        <!-- Header -->
+        <!--<div class="header">-->
+		<div class="content-wrapper">
+            <img src="assets/img/logo.png" alt="ShadowDNA WebUI Logo" class="logo" width="128" height="128"> <br>
+			
+			<!-- Token Information -->
+            <h2>Token Info</h2>
+            <ul>
+                <li>Contract Address: <label style="color:olive;"> <a style="color:olive;" href="https://polygonscan.com/token/0xC78E8E78829F8eC42070090016590300F2a3eA6e" target="_blank">0xC78E8E78829F8eC42070090016590300F2a3eA6e</a> </label></li>
+                <li>Symbol: SHADNA</li>
+                <li>Mainnet: Polygon PoS (ChainID 137)</li>
+                <li>Max Token Supply: 300,000,000,000</li>
+                <li>Token Decimal: 18</li>
+                <li>Launch Date: 2026/Feb</li>
+            </ul> <br>
+			
+			<!-- Button to access DApp -->
+            <button class="btn-primary" onclick="window.location.href='dapp.html'">Go to DApp Center</button> <br>
+			
+		<div class="content-wrapper">
+	            <!-- Recent News Section -->
+            <h2>Recent News</h2>
+            <ul id="newsList">
+                <!-- News items will be added dynamically here -->
+            </ul>
+		</div>
+			
+			 <!-- Contact and Socials -->
+            <h2>Find Us</h2>
+            <p>❇️We are on Github and X(Twitter) and Telegram. Connect with us for updates and support,</p> 
+			📖on Github:<a style="color:olive;" href="https://github.com/shadowdna/shadna" target="_blank"> github.com/shadowdna/shadna</a> 
+            📳on X:<a style="color:olive;" href="https://x.com/shadna_token" target="_blank">@shadna_token</a> 
+            📳on Telegram:<a style="color:olive;" href="https://t.me/shadow_dna" target="_blank">@shadow_dna</a> 
+			
+        </div>
 
-        <!-- Main Content Area -->
-        <main class="content-wrapper">
-				<div class="logo">ShadowDNA WebUI</div>
-				<button id="theme-toggle" class="connect-btn">🌙 Dark Mode</button>
-				<button id="connectWallet" class="connect-btn">🌐 Connect Wallet</button>
-				
-				<!-- Configuration Panel -->
-            <aside class="config-panel">
-                <h3>Configuration</h3>
-				
-				<!-- Contract Address -->
-                <br><div class="setting-group">
-                    <button id="cpcnaddr" class="contract-btn" onclick="copyIdToClipboard(projectContractAddress);scrollToBottom();">
-                        📝 Copy $SHADNA address
-                    </button>
-                </div>
-                
-                <!-- Gas Buffer Settings -->
-                 <br><div class="setting-group">
-                    <label for="buffergaslimit">Buffer Gas Limit (default 75000):</label>
-                    <input type="number" id="buffergaslimit" value="75000" min="10000"/>
-                    <p style="font-size: 14px; color: olive;" class="note">
-                        *** Increase this if transactions fail due to out-of-gas errors ***
-                    </p>
-                </div>
+        <!-- Content Wrapper -->
+        <div class="content-wrapper">
+            <h1>🟠Welcome to ShadowDNA</h1>
+            <p>Send & Receive Any Asset Anonymously, Start Your Anonymous Web3 Business.</p> <br>
 
-                <!-- Block Time Display -->
-                 <br><div class="setting-group">
-                    <label for="uxtime" style="font-size: 14px; color: olive;">Current Blocktime (Unix):</label>
-                    <button id="uxtime" value="[no wallet/connection]" class="block-time-btn" onclick="navigator.clipboard.writeText(document.getElementById('uxtime').value);alert('copied');"> 
-                        [ No wallet/network connection ]
-                    </button>
-                </div>
+            <!-- Contract Information -->
+            <h2>📍Project Introduction</h2>
+            <p>
+                Have you ever wanted to run a web3 business within your partner anonymously and safely? Shadow DNA is designed to address these needs. It allows sending and receiving assets anonymously on the 🟪Polygon network, ensuring privacy and security in your transactions. <br>
+				🔹For more infomation, <a style="color:olive;" href="https://github.com/shadowdna/shadna#project-introduction" target="_blank">Read This</a> 
+            </p> <br>
 
-            </aside>
-				
-            <!-- Navigation Tabs -->
-            <nav class="tab-nav">
-			<h1 id="mainmenu">Main Menu</h1><br><br>
-					
-				<div class="tab-section">
-                    <h2>Shadow Operations</h2>
-                    <div class="tabs">
-                        <button class="nav-item" data-tab="shadowgenerate">Generate ID</button>
-                        <button class="nav-item" data-tab="shadowdeposit">Deposit</button>
-                        <button class="nav-item" data-tab="shadowstatus">Check Account</button>
-                        <button class="nav-item" data-tab="shadowshare">Share (Distribution)</button>
-                        <button class="nav-item" data-tab="shadowwithdraw">Withdraw</button>
-						<button class="nav-item" data-tab="shadowproxy">Proxy</button>
-                        <button class="nav-item" data-tab="shadowfee">Fee</button>
-                    </div>
-                </div>
-				
-				<div class="tab-section">
-                    <h2>Service Operations</h2>
-                    <div class="tabs">
-                        <button class="nav-item" data-tab="servicebuy">Buy</button>
-                        <button class="nav-item" data-tab="servicefaucet">Faucet</button>
-                    </div>
-				</div>
+            <!-- Shadow Mechanism -->
+            <h2>📍Shadow Mechanism</h2>
+            <p>
+                The `Shadow` mechanism ensures that your assets are only under your control. Each Shadow account is a 32-byte hash (Shadow ID) generated from your wallet address and an Auth phrase, making it impossible for anyone to guess the real wallet address unless they know both(Auth & wallet-address). Each Shadow ID is cryptographically mapped to a wallet-address. <br>
+				🔹To find out more about `Shadow` mechanism, please <a style="color:olive;" href="https://github.com/shadowdna/shadna#shadow-mechanism" target="_blank">Read This</a>  
+            </p> <br>
 
-                <div class="tab-section">
-                    <h2>[Coming Soon...]</h2>
-                    <div class="tabs">
-                        TBA...
-                    </div>
-                </div>
-				
-				<div class="tab-section">
-                    <h2>[Coming Soon...]</h2>
-                    <div class="tabs">
-                        TBA...
-                    </div>
-                </div>
+            <!-- FAQ -->
+            <h2>❔Frequently Asked Questions</h2>
+            <ul>
+                <li><strong>What is Shadow DNA?</strong><br> Shadow DNA is a decentralized application (DApp) that allows for secure and anonymous send/receive/hold crypto-assets on the Polygon network.</li><br>
+                <li><strong>How do I generate a Shadow Account?</strong> Go to Dapp Center, and use 'Generate ID'. for help <a style="color:olive;" href="https://github.com/shadowdna/shadna#parta1--generate-shadow-accountid" target="_blank">Read This</a> </li><br>
+                <li><strong>How do I deposit to a Shadow Account?</strong><br> Deposit assets into a Shadow account is so easy, just go to DApp Center and select 'Deposit'. for help <a style="color:olive;" href="https://github.com/shadowdna/shadna?tab=readme-ov-file#parta2--deposit-to-any-shadow-accountid" target="_blank">Read This</a></li><br>
+                <li><strong>How do I withdraw from my Shadow Account?</strong><br> Withdraw funds by entering the correct Auth phrase and correct wallet-address, all in DApp Center. Only the owner of the Shadow account can initiate this process. for help <a style="color:olive;" href="https://github.com/shadowdna/shadna?tab=readme-ov-file#partb1--withdraw-from-shadow-account" target="_blank">Read This</a></li><br>
+                <li><strong>How does the Shared Shadow ID work?</strong><br> The Shared Shadow ID allows multiple partners to share a single account, automatically dividing received funds according to predefined shares. for help <a style="color:olive;" href="https://github.com/shadowdna/shadna?tab=readme-ov-file#partd1--how-to-generate-shared-shadow-account" target="_blank">Read This</a></li><br>
+				<li><strong>How do I check my Shadow Account?</strong><br> Just go to 'Check' section in DApp Center. for help <a style="color:olive;" href="https://github.com/shadowdna/shadna?tab=readme-ov-file#partc1--check-status-of-shadow-account" target="_blank">Read This</a></li><br>
+				<li><strong>How do I check balance for a Shadow Account?</strong><br> Just go to 'Check' section in DApp Center. for help <a style="color:olive;" href="https://github.com/shadowdna/shadna?tab=readme-ov-file#partc2--check-assets-in-shadow-account" target="_blank">Read This</a></li><br>
+            </ul> 
 
-                <div class="tab-section">
-                    <h2>Donation Operations</h2>
-                    <div class="tabs">
-                        <button class="nav-item" data-tab="donatefaucet">Donate to Faucet</button>
-                        <button class="nav-item" data-tab="donateliq">Donate to LP</button>
-                    </div>
-                </div>
-
-                <div class="tab-section">
-                    <h2>Miscellaneous</h2>
-                    <div class="tabs">
-                        <button class="nav-item" data-tab="miscbulktxwallet">Bulk Transfers (Wallet)</button>
-                        <button class="nav-item" data-tab="miscbulktxshadow">Bulk Transfers (Shadow)</button>
-                    </div>
-                </div>
-            </nav>
-
-            <!-- Main Content Area -->
-            <section class="content-area" id="contentArea">
-                <p>Please connect your wallet and select a tab.</p>
-            </section>
-
-        </main>
-
-        <!-- dummy debug  -->
-        <!--<div class="tx-info-section">
-            <textarea id="tempResult" rows="5" placeholder="Transaction details will appear here..." style="width:100%;"></textarea>
-            <button id="gettxinfo" class="btn">TX Info</button>
-        </div>-->
-
-        <!-- Main Lib source -->
-		<script>
-			const themeToggle = document.getElementById('theme-toggle');
-			const body = document.body;
-
-			themeToggle.addEventListener('click', () => {
-				// Toggle 'dark-mode' class on body
-				body.classList.toggle('dark-mode');
-
-				// Update button text based on theme
-				if (body.classList.contains('dark-mode')) {
-					themeToggle.textContent = '☀️ Light Mode';
-				} else {
-					themeToggle.textContent = '🌙 Dark Mode';
-				}
-			});
-		</script>
-        <script src="assets/js/ethers.umd.min_v5.8.0.js" type="application/javascript"></script>
-        <script src="assets/js/contract.js"></script>
-        
-        <!-- Initialization Script -->
-        <script>
-          window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-              const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
-              const el = document.getElementById("contentArea");
-
-              if (isMobile && !window.ethereum && el) {
-                el.innerHTML =
-                  '<p>📱 on Mobile? Open this page in MetaMask or Trust Wallet browser.</p>';
-              }
-            }, 500);
-          });
-        </script>
+            <!-- Button to access DApp -->
+            <br><button class="btn-primary" onclick="window.location.href='dapp.html'">Go to DApp Center</button>
+        </div>
+			
     </div>
+
+
+<!-- news Text Fetch Script -->
+    <script>
+        // JavaScript to fetch and display news
+        fetch('blog/news.json') // Path to your news data file
+            .then(response => response.json())
+            .then(data => {
+                const newsList = document.getElementById('newsList');
+                data.news.forEach(item => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = item.url;
+					a.style.color = 'olive';
+                    a.textContent = item.title + ' - ' + item.date;
+                    a.target = '_blank'; // Open in new tab
+                    li.appendChild(a);
+                    newsList.appendChild(li);
+                });
+            })
+            .catch(error => console.error('Error fetching news:', error));
+    </script>
 </body>
+	
 </html>

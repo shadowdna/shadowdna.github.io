@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ShadowDNA DApp Center</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="modern-ui">
+    <div class="main-container">
+        <!-- Header Section -->
+        <div class="header">
+            <img id="logoproject" src="assets/img/logo.png" alt="ShadowDNA WebUI Logo" class="logo" width="128" height="128"/> <br>
+			<b><figcaption><strong>ShadowDNA DApp Center</strong></figcaption></b>
+        </div>
+		<div class="tab-nav">
+				<button id="theme-toggle" class="connect-btn">🌙 Dark Mode</button> <br><br>
+				<button id="connectWallet" class="connect-btn">🌐 Connect Wallet</button> <br><br>
+				
+				
+                <button id="cpcnaddr" class="contract-btn" onclick="copyIdToClipboard(projectContractAddress);scrollToBottom();">
+                    📝 Copy $SHADNA address
+                </button> <br>
+				<!--<label for="cpcnaddr">Contract Address: 0xC78E8E78829F8eC42070090016590300F2a3eA6e</label>-->
+			</div>
+			
+            <nav class="tab-nav">
+                <h1 id="mainmenu">Main Menu</h1><br><br>
+                
+                <div class="tab-section">
+                    <h2>Shadow Operations</h2>
+                    <div class="tabs">
+                        <button class="nav-item" data-tab="shadowgenerate">Generate ID</button>
+                        <button class="nav-item" data-tab="shadowdeposit">Deposit</button>
+                        <button class="nav-item" data-tab="shadowstatus">Check Account</button>
+                        <button class="nav-item" data-tab="shadowshare">Share (Distribution)</button>
+                        <button class="nav-item" data-tab="shadowwithdraw">Withdraw</button>
+                        <button class="nav-item" data-tab="shadowproxy">Proxy</button>
+                        <button class="nav-item" data-tab="shadowfee">Fee</button>
+                    </div>
+                </div>
+
+                <div class="tab-section">
+                    <h2>Service Operations</h2>
+                    <div class="tabs">
+                        <button class="nav-item" data-tab="servicebuy">Buy</button>
+                        <button class="nav-item" data-tab="servicefaucet">Faucet</button>
+                    </div>
+                </div>
+
+                <div class="tab-section">
+                    <h2>[Coming Soon...]</h2>
+                    <div class="tabs">
+                        TBA...
+                    </div>
+                </div>
+
+                <div class="tab-section">
+                    <h2>[Coming Soon...]</h2>
+                    <div class="tabs">
+                        TBA...
+                    </div>
+                </div>
+
+                <div class="tab-section">
+                    <h2>Donation Operations</h2>
+                    <div class="tabs">
+                        <button class="nav-item" data-tab="donatefaucet">Donate to Faucet</button>
+                        <button class="nav-item" data-tab="donateliq">Donate to LP</button>
+                    </div>
+                </div>
+
+                <div class="tab-section">
+                    <h2>Miscellaneous</h2>
+                    <div class="tabs">
+                        <button class="nav-item" data-tab="miscbulktxwallet">Bulk Transfers (Wallet)</button>
+                        <button class="nav-item" data-tab="miscbulktxshadow">Bulk Transfers (Shadow)</button>
+                    </div>
+                </div>
+            </nav>
+
+            <section class="content-area" id="contentArea">
+                <p>Please connect your wallet and select a tab.</p>
+            </section>
+
+        <!-- Main Content Area -->
+        <main class="content-wrapper">
+		
+		<!-- Configuration Panel -->
+        <aside class="config-panel">
+            <h3>Advanced Configuration</h3>
+            
+            <br>
+            
+            <br><div class="setting-group">
+                <label for="buffergaslimit">Buffer Gas Limit (default 75000):</label>
+                <input type="number" id="buffergaslimit" value="75000" min="10000"/>
+                <p style="font-size: 14px; color: olive;" class="note">
+                    *** Increase this if transactions fail due to out-of-gas errors ***
+                </p>
+            </div>
+
+            <br><div class="setting-group">
+                <label for="uxtime" style="font-size: 14px; color: olive;">Current Blocktime (Unix):</label>
+                <button id="uxtime" value="[no wallet/connection]" class="block-time-btn" onclick="navigator.clipboard.writeText(document.getElementById('uxtime').value);alert('copied');"> 
+                    [ No wallet/network connection ]
+                </button>
+            </div>
+
+        </aside>
+		
+		</main>
+
+    </div>
+
+    <!-- Main Lib source -->
+    <script src="assets/js/ethers.umd.min_v5.8.0.js" type="application/javascript"></script>
+    <script src="assets/js/contract.js"></script>
+    
+    <!-- Initialization Script -->
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            // Toggle 'dark-mode' class on body
+            body.classList.toggle('dark-mode');
+
+            // Update button text based on theme
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.textContent = '☀️ Light Mode';
+            } else {
+                themeToggle.textContent = '🌙 Dark Mode';
+            }
+        });
+    </script>
+    
+</body>
+</html>
